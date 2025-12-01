@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Feliz Cumpleaños</title>
+  <style>
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      background: black;
+      overflow: hidden;
+      height: 100%;
+      font-family: 'Times New Roman', Times, serif;
+      color: white;
+    }
+
+    canvas {
+      display: block;
+      width: 100vw;
+      height: 100vh;
+    }
+
+    #ytplayer {
+      width: 0;
+      height: 0;
+      border: none;
+    }
+
+    #contenido {
+      display: none;
+      height: 100vh;
+      width: 100vw;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .bloque {
+      text-align: center;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+      position: absolute;
+    }
+
+    .bloque.activo {
+      opacity: 1;
+    }
+
+    #contenido img {
+      max-width: 80%;
+      height: auto;
+      margin: 1em 0;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+    }
+
+    #contenido p {
+      font-size: 1.5em;
+      margin: 1em 0;
+    }
+    /* 📱 Celulares */
+@media (max-width: 600px) {
+  #contenido img {
+    max-width: 95%;
+  }
+  #contenido p {
+    font-size: 1.2em;
+  }
+}
+
+/* 📱 Tablets */
+@media (min-width: 601px) and (max-width: 1024px) {
+  #contenido img {
+    max-width: 85%;
+  }
+  #contenido p {
+    font-size: 1.4em;
+  }
+}
+  </style>
+</head>
+
+<body>
+  <canvas id="escena"></canvas>
+
+  <!-- 🎶 Audio invisible -->
+<iframe id="ytplayer"
+  src="https://www.youtube.com/embed/7Tw1gwGo34Y?autoplay=1&controls=0&showinfo=0"
+  allow="autoplay"
+  style="width:0;height:0;border:none;">
+</iframe>
+
+  <!-- 🎉 Contenido final -->
+  <div id="contenido">
+    <div class="bloque activo">
+      <img src="https://i.pinimg.com/236x/0f/51/47/0f5147f49266bf5c9d4f9f9793d137ee.jpg" alt="Imagen 1">
+      <p>¡Feliz Cumpleaños, mi niña Valiente! 🎉</p>
+    </div>
+    <div class="bloque">
+      <img src="https://i.pinimg.com/736x/2d/19/c3/2d19c381d1891175ef2d23940052e004.jpg" alt="Imagen 2">
+      <p>Que tu día esté lleno de alegría , sueños, esperanzas y mucho amor ✨</p>
+    </div>
+    <div class="bloque">
+      <img src="https://i.pinimg.com/564x/81/30/38/81303845327dcd28024125f343eb1404.jpg" alt="Imagen 3" width="250px">
+      <p>Un nuevo viaje lleno de misterios y alegria esta comenzando🌟</p>
+    </div>
+    <div class="bloque">
+      <img src="https://i.pinimg.com/236x/4d/99/77/4d997770d70d757858ab5d236043335d.jpg" alt="Imagen 4">
+      <p>Y en cada camino que estes estare apoyandote deseando lo mejor 💖</p>
+    </div>
+    <div class="bloque">
+      <img src="https://i.pinimg.com/originals/ba/01/9f/ba019f86ec14c15f6d4698c4812be944.jpg" alt="Imagen 4" width="350px">
+      <p>Tal vez el camino sea dificil y oscuro</p>
+    </div>
+    <div class="bloque">
+      <img src="https://p4.wallpaperbetter.com/wallpaper/719/378/391/anime-anime-girls-mahou-shoujo-madoka-magica-kaname-madoka-homura-akemi-hd-wallpaper-preview.jpg" alt="Imagen 4">
+      <p>Pero se que encontraras la manera de seguir buscando una luz especial</p>
+    </div>
+    <div class="bloque">
+      <img src="https://cdn.pixabay.com/photo/2025/05/14/16/13/girl-9599953_1280.png" alt="Imagen 4" width="350px">
+      <p>Eres valiente, fuerte y determinada, asi que demuestra quien
+        <br>
+        es la persona que eres realmente
+      </p>
+    </div>
+    <div class="bloque">
+      <img src="https://i.pinimg.com/originals/b1/a2/38/b1a2380a5f21a76b31031398af6e068c.jpg" alt="Imagen 4" width="350px">
+      <p>Tu camino estara lleno de sorpresas y diversion, te lo prometo </p>
+    </div>
+    <div class="bloque">
+      <img src="https://img.freepik.com/foto-gratis/hermosa-escena-dibujos-animados-ninos_23-2151035177.jpg?semt=ais_hybrid&w=740&q=80"  alt="Imagen 4" width="350px">
+      <p>Asi que sigue asi, lucha y sigue sonriendo siempre</p>
+    </div>
+        <div class="bloque">
+      <img src="https://i.pinimg.com/736x/db/07/30/db07308895822ea7f46cbd8a7f5375b3.jpg" alt="Imagen 4" width="250px">
+      <p>Todos tus sueños se haran realidad, solo manten la esperanza</p>
+    </div>
+        <div class="bloque">
+      <img src="https://i.pinimg.com/474x/01/9b/0e/019b0ebd2f2cae20a7ddbcac99be04ab.jpg" alt="Imagen 4" width="250px">
+      <p>Te amo Valeria, sigue buscando esa luz para que 
+        <br>
+        te diviertas y seas tu realmente sin ningun miedo 💖</p>
+    </div>
+  </div>
+
+  <script>
+    const canvas = document.getElementById("escena");
+    const ctx = canvas.getContext("2d");
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    let particulas = [];
+    for (let i = 0; i < 2000; i++) {
+      particulas.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        tx: null, ty: null,
+        r: 2,
+        color: `hsl(${Math.random() * 360},100%,70%)`
+      });
+    }
+
+    function asignarRegalo() {
+      let targets = [];
+      const cx = canvas.width / 2, cy = canvas.height / 2;
+      for (let x = -150; x <= 150; x += 12) {
+        for (let y = -150; y <= 150; y += 12) {
+          targets.push({ tx: cx + x, ty: cy + y });
+        }
+      }
+      for (let y = -150; y <= 150; y += 12) {
+        targets.push({ tx: cx, ty: cy + y });
+      }
+      for (let x = -150; x <= 150; x += 12) {
+        targets.push({ tx: cx + x, ty: cy });
+      }
+      for (let i = 0; i < targets.length && i < particulas.length; i++) {
+        particulas[i].tx = targets[i].tx;
+        particulas[i].ty = targets[i].ty;
+      }
+    }
+
+    function dibujarParticulas() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      for (let p of particulas) {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = p.color;
+        ctx.fill();
+        if (p.tx !== null) {
+          p.x += (p.tx - p.x) * 0.05;
+          p.y += (p.ty - p.y) * 0.05;
+        }
+      }
+    }
+
+    function animar() {
+      dibujarParticulas();
+      requestAnimationFrame(animar);
+    }
+    animar();
+
+    // 🎁 formar regalo
+    setTimeout(() => { asignarRegalo(); }, 3000);
+
+    // 💥 explotar
+    setTimeout(() => {
+      for (let p of particulas) {
+        p.tx = Math.random() * canvas.width;
+        p.ty = Math.random() * canvas.height;
+      }
+    }, 6000);
+
+    // 🧹 eliminar canvas y mostrar contenido centrado
+    setTimeout(() => {
+      canvas.remove();
+      document.getElementById("contenido").style.display = "flex";
+
+      // Transiciones de bloques cada 6 segundos
+      const bloques = document.querySelectorAll(".bloque");
+      let index = 0;
+      setInterval(() => {
+        bloques[index].classList.remove("activo");
+        index = (index + 1) % bloques.length;
+        bloques[index].classList.add("activo");
+      }, 6000);
+    }, 9000);
+  </script>
+</body>
+
+</html>
