@@ -145,6 +145,9 @@
   </div>
 
   <script>
+      setTimeout(() => {
+    document.getElementById('musica').muted = false;
+  }, 1000);
     const canvas = document.getElementById("escena");
     const ctx = canvas.getContext("2d");
     canvas.width = window.innerWidth;
@@ -231,4 +234,5 @@
 
 
 </html>
+
 
